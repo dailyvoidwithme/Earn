@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PREMIUM LINKS - Straw Hat Admin Panel</title>
+    <style>
+        body {
+            background-color: #1a0505; /* Deep Straw hat Red */
+            color: #f4e8c1; /* Vintage parchment/map color */
+            font-family: Arial, sans-serif;
+            padding: 40px;
+        }
+        .admin-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #2d0b0b;
+            border: 3px solid #ffcc00; /* Gold trim */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.2);
+        }
+        h2 {
+            color: #ffcc00;
+            text-align: center;
+            border-bottom: 2px dashed #ff3e3e;
+            padding-bottom: 10px;
+        }
+        label { display: block; margin: 15px 0 5px; font-weight: bold;}
+        input {
+            width: 100%;
+            padding: 10px;
+            background: #110000;
+            border: 1px solid #ffcc00;
+            color: white;
+            box-sizing: border-box;
+            border-radius: 4px;
+        }
+        button {
+            background: #ff3e3e;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        button:hover { background: #ffcc00; color: black; }
+        textarea { width: 100%; height: 100px; background: #222; color: #00ff00; margin-top: 15px;}
+    </style>
+</head>
+<body>
+
+    <div class="admin-box">
+        <h2>☠️ CAPTAIN'S LOG (ADMIN PANEL) ☠️</h2>
+        
+        <label>Video Stream URL (.mp4 link)</label>
+        <input type="text" id="vid-url" placeholder="https://yourstorage.com/video.mp4">
+
+        <label>"Watch Full Video" Redirect Link</label>
+        <input type="text" id="full-url" placeholder="https://externalsite.com/fullvideo">
+
+        <button onclick="generateJSON()">Generate Video Package</button>
+
+        <label style="margin-top: 20px;">Copy this code to your GitHub database block:</label>
+        <textarea id="output-json" readonly></textarea>
+    </div>
+
+    <script>
+        function generateJSON() {
+            const url = document.getElementById('vid-url').value;
+            const full = document.getElementById('full-url').value;
+            
+            const result = { "src": "${url}", "fullUrl": "${full}" },;
+            document.getElementById('output-json').value = result;
+        }
+    </script>
+</body>
+</html>
