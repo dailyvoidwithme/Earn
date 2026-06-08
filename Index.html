@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PREMIUM LINKS - Stream</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>🏴‍☠️ PREMIUM LINKS</h1>
+    </header>
+
+    <main class="player-container">
+        <div class="video-box">
+            <video id="main-video" controls poster="https://via.placeholder.com/800x450?text=Premium+Links">
+                <source id="video-source" src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div class="cta-container">
+            <a id="full-video-btn" href="#" target="_blank" class="spicy-btn animate-pulse">🔥 GO WATCH FULL VIDEO 🔥</a>
+        </div>
+
+        <div class="nav-controls">
+            <button id="prev-btn" class="nav-btn">◀ Previous</button>
+            <button id="next-btn" class="nav-btn">Next ▶</button>
+        </div>
+    </main>
+
+    <div id="ad-container" class="ad-space">
+        <p class="ad-placeholder">Sponsored Advertisement</p>
+    </div>
+
+    <script>
+        // Sample Video Data (This will eventually be loaded from your admin panel data)
+        const playlist = [
+            { src: "https://www.w3schools.com/html/mov_bbb.mp4", fullUrl: "https://example.com/full-1" },
+            { src: "https://www.w3schools.com/html/movie.mp4", fullUrl: "https://example.com/full-2" }
+        ];
+
+        let currentIndex = 0;
+
+        const video = document.getElementById('main-video');
+        const source = document.getElementById('video-source');
+        const fullVideoBtn = document.getElementById('full-video-btn');
+
+        function loadVideo(index) {
+            if(playlist.length === 0) return;
+            currentIndex = index;
+            source.src = playlist[index].src;
+            fullVideoBtn.href = playlist[index].fullUrl;
+            video.load();
+        }
+
+        document.getElementById('prev-btn').addEventListener('click', () => {
+            if (currentIndex > 0) loadVideo(currentIndex - 1);
+        });
+
+        document.getElementById('next-btn').addEventListener('click', () => {
+            if (currentIndex < playlist.length - 1) loadVideo(currentIndex + 1);
+        });
+
+        // Initialize first video
+        loadVideo(0);
+    </script>
+</body>
+</html>
